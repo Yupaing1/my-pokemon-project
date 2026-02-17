@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokéBattle</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="arena">
+      <header>
+        <h1 id="status">Poké<span>Battle</span></h1>
+        <button id="start-btn">FIND OPPONENT</button>
+      </header>
+
+      <div class="battle-floor">
+        <div class="player-side" id="p1-area">
+          <div class="bar-label">
+            <span>HP</span><span id="p1-hp-text">---</span>
+          </div>
+          <div class="bar-container">
+            <div id="p1-hp-bar" class="hp-fill"></div>
+          </div>
+          <div class="bar-label">
+            <span>ULTIMATE</span><span id="p1-energy-text">0%</span>
+          </div>
+          <div class="bar-container">
+            <div id="p1-energy-bar" class="energy-fill"></div>
+          </div>
+
+          <div
+            id="p1-display"
+            class="display-container"
+            style="cursor: pointer"
+            onclick="openSelection()"
+          >
+            <div class="mystery-box">?</div>
+            <h2 class="pokemon-name">Tap to Choose</h2>
+          </div>
+
+          <div class="controls">
+            <div class="moves-grid" id="p1-moves"></div>
+          </div>
+        </div>
+
+        <div class="vs">VS</div>
+
+        <div class="player-side" id="p2-area">
+          <div class="bar-label">
+            <span>HP</span><span id="p2-hp-text">---</span>
+          </div>
+          <div class="bar-container">
+            <div id="p2-hp-bar" class="hp-fill"></div>
+          </div>
+          <div class="bar-label">
+            <span>ULTIMATE</span><span id="p2-energy-text">0%</span>
+          </div>
+          <div class="bar-container">
+            <div id="p2-energy-bar" class="energy-fill"></div>
+          </div>
+
+          <div id="p2-display" class="display-container">
+            <div class="mystery-box">?</div>
+            <h2 class="pokemon-name">Waiting...</h2>
+          </div>
+
+          <div class="controls">
+            <div class="moves-grid" id="p2-moves"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="log" class="battle-log">
+        Welcome Trainer. Select your Pokémon to begin.
+      </div>
+    </div>
+
+    <audio
+      id="sfx-hit"
+      src="https://assets.mixkit.co/active_storage/sfx/2771/2771-preview.mp3"
+    ></audio>
+    <audio
+      id="sfx-ult"
+      src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3"
+    ></audio>
+
+    <div id="selection-modal" class="modal">
+      <div class="modal-content">
+        <h2>Select Partner</h2>
+        <div style="margin: 15px 0; display: flex; gap: 8px">
+          <input
+            type="text"
+            id="p1-input"
+            placeholder="Search (e.g., Gengar)..."
+            style="
+              flex: 1;
+              padding: 8px;
+              border-radius: 8px;
+              border: 1px solid #334155;
+              background: #0f172a;
+              color: white;
+              outline: none;
+              font-size: 0.9rem;
+            "
+          />
+          <button
+            id="p1-search-btn"
+            style="
+              padding: 0 15px;
+              border-radius: 8px;
+              background: var(--p1-color);
+              color: white;
+              border: none;
+              cursor: pointer;
+              font-weight: bold;
+              font-size: 0.8rem;
+            "
+          >
+            GO
+          </button>
+        </div>
+        <div class="poke-grid" id="poke-grid"></div>
+        <button
+          id="close-modal"
+          style="
+            margin-top: 15px;
+            background: transparent;
+            color: #94a3b8;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.8rem;
+          "
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <h1 id="result-text"></h1>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
